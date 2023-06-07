@@ -1,0 +1,15 @@
+jenkins port:8080
+/var/lib/jenkins/secrets/initialAdminPassword       ::::d068cec3bfcd44f4b058c6af47dbabb3
+/var/lib/jenkins/workspace/
+/var/lib/opt/tomcat/webapp .....location of war
+init 6   :to reboot system
+docker run -d --name tomcat-container -p 8081:8080 tomcat    ....creating container of tomcat on dockerhost
+docker build -t mytomcat .         (. means current dir)
+docker run -d --name mytomcat-server -p 8083:8080 mytomcat
+useradd dockeradmin           ....create user dockeradmin
+usermod -aG docker dockeradmin  ........add user dockeradmin to docker group
+publish over ssh       .....plugin to integrate docker with jenkins
+
+docker images
+docker ps -a                .....containers(we cannot create multiple containers with the same name)
+docker stop "container"
